@@ -7,6 +7,8 @@ import 'package:level4_belajar_asynchronous/level4_belajar_asynchronous.dart'
  3. Completed -> error (tidak sukses)
 */
 
+//async biasa
+/*
 void main() {
   // dataDelay();
   // print(getOrder(2));
@@ -21,6 +23,40 @@ void main() {
   });
   pertama();
   kedua();
+}
+*/
+
+//async layaknya proses sync -> menggunakan await
+void main() async {
+  // await getOrder(10).then(
+  //   (String status) {
+  //     print('Dijalankan');
+  //     print(status);
+  //   }
+  // ).catchError((error){
+  //   print('Yang ini dijalankan');
+  //   print(error);
+  // });
+
+  //tidak bisa handle kalau ada error
+  /*
+  String status = await getOrder(3);
+
+  print(status);
+  */
+
+  //bisa handle kalau ada error
+  try {
+    String status = await getOrder(10);
+    print('Dijalankan');
+    print(status);
+  } catch (error) {
+    print('Yang ini dijalankan');
+    print(error);
+  } finally {
+    pertama();
+    kedua();
+  }
 }
 
 void pertama() {
